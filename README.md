@@ -12,6 +12,8 @@
 2. Realizar lo solicitado en los archivos:
  * 01-countdown/Countdown.tsx
  * 02-radial/Radial.tsx
+3. Correr el proyecto con el comando ```npm run dev```
+4. Abrir el puerto que se muestra en la consola
 
 
 ### Mucha suerte!
