@@ -2,8 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 
 import { RootLayout } from "../RootLayout";
 
-import { CountdownPage } from '../01-countdown/CountdownComplete';
-import { RadialPage } from "../02-radial/RadialComplete";
+import { CountdownPage } from '../01-countdown/Countdown';
+import { RadialPage } from "../02-radial/Radial";
 
 
 
