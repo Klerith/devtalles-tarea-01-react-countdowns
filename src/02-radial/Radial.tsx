@@ -10,22 +10,25 @@
  * 
  */
 
-import { useState } from "react"
+
 import { RiPauseFill, RiPlayLine, RiRestartLine } from "react-icons/ri";
+import { useCountdown } from "../hooks/useCountdown";
 
 
 interface Props {
   initialValue?: number;
 }
 
-export const RadialPage = ({ initialValue = 100 }: Props) => {
+export const RadialPage = ({ initialValue = 10 }: Props) => {
 
-  // Todo: cambiar el número de 100 a 10 o cualquier otro número
-  // pero el porcentaje del radial-progress debe de ser correcto basado en ese numero
-  const [seconds, setSeconds] = useState(initialValue);
-
-
-  const percentage = seconds; // Todo: Realizar el calculo
+  const {
+    percentage,
+    seconds,
+    startTimer,
+    isRunning,
+    pauseTimer,
+    restartTimer,
+  } = useCountdown({ initialValue });
 
   
   return (
@@ -49,15 +52,20 @@ export const RadialPage = ({ initialValue = 100 }: Props) => {
         <div className="flex mt-2 gap-2">
           
         <button 
-            className="btn btn-accent">
+            onClick={ startTimer }
+            className={`btn  ${ isRunning ? 'btn-accent':'' }`}>
             <RiPlayLine />
           </button>
 
-          <button className="btn">
+          <button
+            onClick={pauseTimer}
+            className={`btn  ${ !isRunning ? 'btn-accent':'' }`}>
             <RiPauseFill />
           </button>
           
-          <button className="btn hover:btn-accent">
+          <button
+              onClick={restartTimer}
+             className="btn hover:btn-accent">
             <RiRestartLine />
           </button>
 

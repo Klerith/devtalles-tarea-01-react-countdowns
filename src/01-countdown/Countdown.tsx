@@ -10,29 +10,21 @@
 
 */
 
-import { useRef, useState } from "react"
 import { RiPauseFill, RiPlayFill, RiRestartLine } from 'react-icons/ri';
+import { useCountdown } from "../hooks/useCountdown";
 
 
 export const CountdownPage = () => {
 
-  //TODO: hacer ejercicio entre 5 a 30 segundos
-  const [seconds, setSeconds] = useState(5);
-  const [isRunning, setIsRunning] = useState(false)
+  
+  const {
+    seconds,
+    startTimer,
+    isRunning,
+    pauseTimer,
+    restartTimer,
+  } = useCountdown({ initialValue: 5 });
 
-  const timerRef = useRef<number>();
-
-  const startTimer = () => {
-    // Todo: 
-  }
-
-  const pauseTimer = () => {
-    // Todo:
-  }
-
-  const restartTimer = () => {
-    // Todo:
-  }
 
 
 
@@ -46,15 +38,21 @@ export const CountdownPage = () => {
 
       <div className="flex gap-2">
 
-        <button onClick={() => startTimer()} className="btn btn-primary btn-circle">
-          <RiPlayFill />
-        </button>
+        {
+          isRunning
+            ? (
 
+              <button onClick={() => pauseTimer()} className="btn btn-secondary btn-circle">
+                <RiPauseFill />
+              </button>
+            )
+            : (
+              <button onClick={() => startTimer()} className="btn btn-primary btn-circle">
+                <RiPlayFill />
+              </button>
 
-
-        <button onClick={() => pauseTimer()} className="btn btn-secondary btn-circle">
-          <RiPauseFill />
-        </button>
+            )
+        }
 
 
         <button onClick={() => restartTimer()} className="btn btn-circle">
